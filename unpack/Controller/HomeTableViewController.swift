@@ -23,7 +23,6 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
         
         self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "albumCell")
         
-        
     }
     
     
@@ -31,6 +30,11 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
     override func viewWillAppear(_ animated: Bool) {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc func addTapped() {

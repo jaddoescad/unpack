@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 
 class ReorderViewCell: UICollectionViewCell {
@@ -28,28 +29,25 @@ class ReorderViewCell: UICollectionViewCell {
 }
 
 extension ReorderViewController {
-    override func viewDidLayoutSubviews() {
-        self.view.backgroundColor = .red
+    override func viewWillLayoutSubviews() {
+
+
+    }
+    
+
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        let button: UIButton = UIButton(type: UIButton.ButtonType.custom)
         
-        let image = UIImage(named: "cancel")
-        //set image for button
-        button.setImage(image, for: UIControl.State.normal)
-        //add function for button
-        button.addTarget(self, action: #selector(self.close), for: UIControl.Event.touchUpInside)
-        //set frame
-        button.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        button.contentEdgeInsets = UIEdgeInsets(top: 10,left: 0,bottom: 10,right: 30)
-
-        button.sizeToFit()
-
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(getter: next))
     }
+    
+
 }
+
+
 
 
 // MARK: - Collection View Flow Layout Delegate
@@ -137,3 +135,46 @@ extension ReorderViewController: UICollectionViewDragDelegate, UICollectionViewD
         return UICollectionViewDropProposal(operation: .forbidden)
     }
 }
+
+extension ReorderViewController {
+    
+    func setFloatingActionButton() {
+        floaty.paddingY = 50
+        floaty.buttonColor = .black
+        floaty.hasShadow = false
+        floaty.plusColor = .white
+
+        floaty.addItem("Add more pictures", icon: UIImage(named: "cameraPlus")!, handler: { item in
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                DispatchQueue.main.async {
+                    
+                    print("status is \(newStatus)")
+                    if newStatus ==  PHAuthorizationStatus.authorized {
+                        if #available(iOS 14, *) {
+                            var configuration = PHPickerConfiguration()
+                            configuration.selectionLimit = 100
+                            configuration.filter = .images
+                            
+                            
+                            let picker = PHPickerViewController(configuration: configuration)
+                            picker.delegate = self
+                            
+                            self.present(picker, animated: true, completion: nil)
+                        } else {
+                            // Fallback on earlier versions
+                        }
+                        print("success")
+                    }
+                }
+            })
+        })
+        floaty.addItem("Delete Pictures", icon: UIImage(named: "bin")!, handler: { item in
+             
+        })
+
+        self.view.addSubview(floaty)
+    }
+}
+
+

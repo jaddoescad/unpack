@@ -6,6 +6,7 @@ target 'unpack' do
   use_frameworks!
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher', '~> 7.0'
+  pod 'Floaty', '~> 4.2.0'
   # Pods for unpack
 
   target 'unpackTests' do

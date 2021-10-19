@@ -8,10 +8,48 @@
 import Foundation
 import UIKit
 import PhotosUI
+import Floaty
 
-class ReorderViewController: UICollectionViewController {
+class ReorderViewController: UICollectionViewController, PHPickerViewControllerDelegate {
     
     var images: [UIImage] = []
+
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        var images_: [UIImage] = []
+
+        dismiss(animated: true) {
+            let group = DispatchGroup()
+            
+            guard !results.isEmpty else { return }
+            
+            for result in results {
+                group.enter()
+                result.itemProvider.loadObject(ofClass: UIImage.self) { (object, error) in
+                    guard let image = object as? UIImage else { return }
+                    images_.append(image)
+                    group.leave()
+                }
+                
+            }
+            
+            group.notify(queue: .main) {
+                
+                for i in 0 ..< images_.count {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                            self.images.append(images_[i])
+                            self.collectionView?.insertItems(at: [IndexPath(item: self.images.count - 1, section: 0)])
+                        }
+                }
+            }
+                
+        }
+    }
+    
+    
+    let floaty = Floaty()
+
+    
     let itemsPerRow: CGFloat = 2
     
     let sectionInsets = UIEdgeInsets(
@@ -28,10 +66,14 @@ class ReorderViewController: UICollectionViewController {
         collectionView.dragDelegate = self
         collectionView.dropDelegate = self
         collectionView.dragInteractionEnabled = true
-    }
-    
-    @objc func close() {
-        closeVC(navigationController: self.navigationController)
+        self.tabBarController?.tabBar.isHidden = true
+        setFloatingActionButton()
+        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+
+        self.title = "Hold to sort"
+
+
     }
 }
 
@@ -61,7 +103,7 @@ extension ReorderViewController {
       for: indexPath) as! ReorderViewCell
       
       
-            
+    
     cell.albumImage.image = images[indexPath.row]
     cell.backgroundColor = .black
 
@@ -69,5 +111,9 @@ extension ReorderViewController {
     // Configure the cell
     return cell
   }
+    
+    @objc func addTapped (){
+        
+    }
 }
 

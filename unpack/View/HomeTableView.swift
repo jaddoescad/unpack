@@ -139,6 +139,7 @@ extension HomeTableViewController {
         changeStatusBarColor()
     }
     
+    
 
     
     func setupNavigationBar() {

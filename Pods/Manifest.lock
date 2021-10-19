@@ -1,20 +1,24 @@
 PODS:
+  - Floaty (4.2.0)
   - Kingfisher (7.1.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - Floaty (~> 4.2.0)
   - Kingfisher (~> 7.0)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
+    - Floaty
     - Kingfisher
     - SnapKit
 
 SPEC CHECKSUMS:
+  Floaty: e2bd5a0f6f7f70899e26ff2da31081c8bee8d1b0
   Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 8fe21b0a09f1d77857757b3abc47a86bcf5f7320
+PODFILE CHECKSUM: 2725309a3e9d204df57d3997ac2eec4a87aa82a6
 
 COCOAPODS: 1.11.2

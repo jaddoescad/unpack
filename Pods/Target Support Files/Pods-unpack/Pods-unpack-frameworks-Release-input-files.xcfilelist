@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-unpack/Pods-unpack-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
