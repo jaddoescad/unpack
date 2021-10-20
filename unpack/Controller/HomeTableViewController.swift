@@ -22,7 +22,9 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
         self.tableView.delegate = self
         
         self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "albumCell")
-        
+        // We can use a 1px image with the color we want for the shadow image
+        self.navigationController?.navigationBar.shadowImage = UIColor.lightGray.as1ptImage()
+
     }
     
     
@@ -32,6 +34,8 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
         tableView.estimatedRowHeight = UITableView.automaticDimension
 
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false

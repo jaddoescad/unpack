@@ -12,12 +12,38 @@ import Floaty
 
 class ReorderViewController: UICollectionViewController, PHPickerViewControllerDelegate {
     
-    var images: [UIImage] = []
+    
+    var images: [UIImage] = []{
+        didSet {
+            if (images.count == 0) {
+                showDelete = false
+                switchNavItemtoNext()
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                
+            } else {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.title = "Back";
+    }
+    
+    
+    
+    @objc func NextAddDetails() {
+        let AddInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddInfoViewController") as! AddInfoViewController
+            
+        self.navigationController?.pushViewController(AddInfoViewController, animated: true)
+    }
+    
+    var showDelete: Bool = false
+    
 
     @available(iOS 14, *)
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         var images_: [UIImage] = []
-
         dismiss(animated: true) {
             let group = DispatchGroup()
             
@@ -71,7 +97,6 @@ class ReorderViewController: UICollectionViewController, PHPickerViewControllerD
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
 
-        self.title = "Hold to sort"
 
 
     }
@@ -90,7 +115,7 @@ extension ReorderViewController {
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    return images.count
+      return self.images.count
   }
   
   // 3
@@ -101,19 +126,29 @@ extension ReorderViewController {
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "collectionCell",
       for: indexPath) as! ReorderViewCell
-      
-      
-    
     cell.albumImage.image = images[indexPath.row]
     cell.backgroundColor = .black
-
+      cell.deleteButton.tag = indexPath.row
       
-    // Configure the cell
+      if (showDelete == false) {
+          cell.deleteButton.isHidden = true
+      } else {
+          cell.deleteButton.isHidden = false
+          
+      }
+      cell.deleteButton.addTarget(self, action: #selector(deleteCell), for: .touchUpInside)
+
     return cell
   }
     
-    @objc func addTapped (){
-        
+    @objc func deleteCell(sender: UIButton) {
+        let indexPath = sender.tag
+        images.remove(at: indexPath)
+        self.collectionView.reloadData()
+    }
+    
+    func switchNavItemtoNext() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(NextAddDetails))
     }
 }
 

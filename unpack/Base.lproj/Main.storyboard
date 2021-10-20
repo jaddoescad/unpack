@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -201,27 +202,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zQ6-x3-HhP">
-                            <size key="itemSize" width="400" height="400"/>
+                            <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="collectionCell" id="4yE-N9-1oF" customClass="ReorderViewCell" customModule="unpack" customModuleProvider="target">
-                                <rect key="frame" x="7" y="0.0" width="400" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X4b-yG-sY8">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-GG-glj">
-                                            <rect key="frame" x="-87.5" y="0.0" width="375" height="200"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-GG-glj">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-rO-CKm">
+                                            <rect key="frame" x="81" y="91" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="a0C-LN-jEF"/>
+                                                <constraint firstAttribute="height" constant="30" id="xTg-Iy-S9C"/>
+                                            </constraints>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" image="cancel" title=""/>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="h0h-rO-CKm" secondAttribute="trailing" constant="8" id="5nq-FU-JYd"/>
+                                        <constraint firstItem="h0h-rO-CKm" firstAttribute="leading" secondItem="w3r-GG-glj" secondAttribute="trailing" constant="-47" id="8Gw-8X-upH"/>
+                                        <constraint firstAttribute="trailing" secondItem="w3r-GG-glj" secondAttribute="trailing" id="AeW-xp-tpT"/>
+                                        <constraint firstItem="h0h-rO-CKm" firstAttribute="top" secondItem="w3r-GG-glj" secondAttribute="bottom" constant="-37" id="Tx3-HW-qdL"/>
+                                        <constraint firstItem="w3r-GG-glj" firstAttribute="leading" secondItem="X4b-yG-sY8" secondAttribute="leading" id="UYA-Si-KrZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="w3r-GG-glj" secondAttribute="bottom" id="sRa-i4-YwR"/>
+                                        <constraint firstItem="w3r-GG-glj" firstAttribute="top" secondItem="X4b-yG-sY8" secondAttribute="top" id="xFk-XE-rWJ"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="albumImage" destination="w3r-GG-glj" id="kxE-bc-mrQ"/>
+                                    <outlet property="deleteButton" destination="h0h-rO-CKm" id="ZkE-vJ-pFD"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -283,13 +303,77 @@
             </objects>
             <point key="canvasLocation" x="1846" y="68"/>
         </scene>
+        <!--Add Info View Controller-->
+        <scene sceneID="bm6-3a-5SZ">
+            <objects>
+                <viewController storyboardIdentifier="AddInfoViewController" id="Hfp-Wd-MZf" customClass="AddInfoViewController" customModule="unpack" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rAk-hp-8MT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RUs-gN-eTE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ZZF-2q-Ubo"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THx-Cs-RZn">
+                                <rect key="frame" x="20" y="64" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcg-xK-d1t" customClass="ButtonWithImage" customModule="unpack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="172" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wrA-nY-or3"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Button"/>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="euV-kN-pA2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="THx-Cs-RZn" firstAttribute="leading" secondItem="RUs-gN-eTE" secondAttribute="leading" constant="20" id="3Ii-7X-39D"/>
+                            <constraint firstItem="RUs-gN-eTE" firstAttribute="centerX" secondItem="euV-kN-pA2" secondAttribute="centerX" id="5E5-eN-U0K"/>
+                            <constraint firstItem="RUs-gN-eTE" firstAttribute="width" secondItem="rAk-hp-8MT" secondAttribute="width" id="5Z8-vl-eee"/>
+                            <constraint firstItem="RUs-gN-eTE" firstAttribute="top" secondItem="euV-kN-pA2" secondAttribute="top" id="POW-ba-USw"/>
+                            <constraint firstItem="Tcg-xK-d1t" firstAttribute="width" secondItem="rAk-hp-8MT" secondAttribute="width" id="d1V-le-XVW"/>
+                            <constraint firstItem="Tcg-xK-d1t" firstAttribute="centerX" secondItem="RUs-gN-eTE" secondAttribute="centerX" id="lK4-Kq-RxI"/>
+                            <constraint firstItem="THx-Cs-RZn" firstAttribute="top" secondItem="RUs-gN-eTE" secondAttribute="top" constant="20" id="nwg-zM-pPS"/>
+                            <constraint firstItem="Tcg-xK-d1t" firstAttribute="top" secondItem="RUs-gN-eTE" secondAttribute="bottom" id="u7j-q2-GDL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="albumTitleTextField" destination="RUs-gN-eTE" id="rnu-ym-qfu"/>
+                        <outlet property="placeholderLabel" destination="THx-Cs-RZn" id="5xk-cv-Yoc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjD-x0-tMh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513" y="69"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="15" height="15"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

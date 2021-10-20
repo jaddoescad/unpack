@@ -11,6 +11,9 @@ import PhotosUI
 
 class ReorderViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
     @IBOutlet weak var albumImage: UIImageView!
     
     
@@ -23,26 +26,22 @@ class ReorderViewCell: UICollectionViewCell {
        //custom logic goes here
         albumImage.contentMode = .scaleAspectFill
         albumImage.clipsToBounds = true
-
+        deleteButton.backgroundColor = UIColorFromRGB(rgbValue: 0xC74B4B)
+        deleteButton.layer.cornerRadius = 15
     }
+    
     
 }
 
 extension ReorderViewController {
-    override func viewWillLayoutSubviews() {
-
-
-    }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(getter: next))
-    }
+        self.title = "Hold to sort"
+
+        switchNavItemtoNext()    }
     
 
 }
@@ -114,17 +113,14 @@ extension ReorderViewController: UICollectionViewDragDelegate, UICollectionViewD
     fileprivate func reorderItems(coordinator:UICollectionViewDropCoordinator, destinationIndexPath:IndexPath, collectionView: UICollectionView) {
         if let item = coordinator.items.first, let sourceIndexPath = item.sourceIndexPath {
             collectionView.performBatchUpdates ({
+                
+                
                 self.images.remove(at: sourceIndexPath.item)
                 self.images.insert(item.dragItem.localObject as! UIImage, at: destinationIndexPath.item)
-                
                 collectionView.deleteItems(at: [sourceIndexPath])
                 collectionView.insertItems(at: [destinationIndexPath])
-                
-
             }, completion: nil)
             coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
-            
-            
         }
     }
     
@@ -145,6 +141,8 @@ extension ReorderViewController {
         floaty.plusColor = .white
 
         floaty.addItem("Add more pictures", icon: UIImage(named: "cameraPlus")!, handler: { item in
+            self.showDelete = false
+            self.collectionView.reloadData()
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
                 DispatchQueue.main.async {
@@ -170,10 +168,18 @@ extension ReorderViewController {
             })
         })
         floaty.addItem("Delete Pictures", icon: UIImage(named: "bin")!, handler: { item in
-             
+            self.showDelete = true
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(self.cancel))
+            self.collectionView.reloadData()
         })
 
         self.view.addSubview(floaty)
+    }
+    
+    @objc func cancel() {
+        self.showDelete = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(NextAddDetails))
+        self.collectionView.reloadData()
     }
 }
 

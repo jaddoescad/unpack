@@ -133,10 +133,10 @@ class HomeTableViewCell: UITableViewCell {
 extension HomeTableViewController {
     override func viewWillLayoutSubviews() {
         self.view.backgroundColor = .white
-        navigationController?.navigationBar.barTintColor = UIColor.white
+//        navigationController?.navigationBar.barTintColor = UIColor.white
 
         setupNavigationBar()
-        changeStatusBarColor()
+//        changeStatusBarColor()
     }
     
     
@@ -155,8 +155,9 @@ extension HomeTableViewController {
     
     
     func changeNavigationBarColor() {
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = true
+                navigationController?.navigationBar.barTintColor = UIColor.white
+//        self.navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func setUpNavigationBarTitleImage() {
@@ -183,5 +184,18 @@ extension HomeTableViewController {
             let statusBar1: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
             statusBar1.backgroundColor = UIColor.white
         }
+    }
+}
+
+
+extension UIColor {
+    func as1ptImage() -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        let ctx = UIGraphicsGetCurrentContext()
+        self.setFill()
+        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
     }
 }

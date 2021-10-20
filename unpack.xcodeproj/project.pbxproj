@@ -26,18 +26,16 @@
 		AFFB71F9271B084000078020 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB71F8271B084000078020 /* extensions.swift */; };
 		AFFB71FB271B0C1500078020 /* helperViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB71FA271B0C1500078020 /* helperViews.swift */; };
 		AFFB71FD271B1D4700078020 /* helperfunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB71FC271B1D4700078020 /* helperfunctions.swift */; };
-		AFFB7204271B27E900078020 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7201271B26B600078020 /* PTSerif-Bold.ttf */; };
-		AFFB7205271B27E900078020 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7201271B26B600078020 /* PTSerif-Bold.ttf */; };
-		AFFB7207271B27EC00078020 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7202271B26B600078020 /* PTSerif-Regular.ttf */; };
-		AFFB7208271B27EC00078020 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7202271B26B600078020 /* PTSerif-Regular.ttf */; };
-		AFFB7209271B285F00078020 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7201271B26B600078020 /* PTSerif-Bold.ttf */; };
-		AFFB720A271B285F00078020 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7202271B26B600078020 /* PTSerif-Regular.ttf */; };
 		AFFB720C271B2E4D00078020 /* ReorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB720B271B2E4D00078020 /* ReorderViewController.swift */; };
 		AFFB720E271B4D7200078020 /* ReorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB720D271B4D7200078020 /* ReorderView.swift */; };
 		AFFB7210271BC58800078020 /* AlbumGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB720F271BC58800078020 /* AlbumGridViewController.swift */; };
 		AFFB7212271BC7F600078020 /* AlbumGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB7211271BC7F600078020 /* AlbumGridView.swift */; };
 		AFFB7214271BCDED00078020 /* AlbumPicturesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB7213271BCDED00078020 /* AlbumPicturesAPI.swift */; };
 		AFFB7216271BCE5200078020 /* AlbumPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB7215271BCE5200078020 /* AlbumPicture.swift */; };
+		AFFB721D271F4E3200078020 /* PTSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB721A271F4DCD00078020 /* PTSerif-Regular.ttf */; };
+		AFFB721E271F4E3400078020 /* PTSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFFB7218271F4DCD00078020 /* PTSerif-Bold.ttf */; };
+		AFFB7220271FB64E00078020 /* AddInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB721F271FB64E00078020 /* AddInfoViewController.swift */; };
+		AFFB7222271FC58000078020 /* AlbumInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFB7221271FC58000078020 /* AlbumInfoView.swift */; };
 		C0EAAC1E487ED9B22B0ADC27 /* Pods_unpack_unpackUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A2F360DC310B973AEDD54B /* Pods_unpack_unpackUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,14 +86,16 @@
 		AFFB71F8271B084000078020 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		AFFB71FA271B0C1500078020 /* helperViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helperViews.swift; sourceTree = "<group>"; };
 		AFFB71FC271B1D4700078020 /* helperfunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helperfunctions.swift; sourceTree = "<group>"; };
-		AFFB7201271B26B600078020 /* PTSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PTSerif-Bold.ttf"; path = "../../../../Downloads/PT_Serif/PTSerif-Bold.ttf"; sourceTree = "<group>"; };
-		AFFB7202271B26B600078020 /* PTSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PTSerif-Regular.ttf"; path = "../../../../Downloads/PT_Serif/PTSerif-Regular.ttf"; sourceTree = "<group>"; };
 		AFFB720B271B2E4D00078020 /* ReorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderViewController.swift; sourceTree = "<group>"; };
 		AFFB720D271B4D7200078020 /* ReorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderView.swift; sourceTree = "<group>"; };
 		AFFB720F271BC58800078020 /* AlbumGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGridViewController.swift; sourceTree = "<group>"; };
 		AFFB7211271BC7F600078020 /* AlbumGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumGridView.swift; sourceTree = "<group>"; };
 		AFFB7213271BCDED00078020 /* AlbumPicturesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPicturesAPI.swift; sourceTree = "<group>"; };
 		AFFB7215271BCE5200078020 /* AlbumPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPicture.swift; sourceTree = "<group>"; };
+		AFFB7218271F4DCD00078020 /* PTSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Bold.ttf"; sourceTree = "<group>"; };
+		AFFB721A271F4DCD00078020 /* PTSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSerif-Regular.ttf"; sourceTree = "<group>"; };
+		AFFB721F271FB64E00078020 /* AddInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfoViewController.swift; sourceTree = "<group>"; };
+		AFFB7221271FC58000078020 /* AlbumInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoView.swift; sourceTree = "<group>"; };
 		F9A2F360DC310B973AEDD54B /* Pods_unpack_unpackUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_unpack_unpackUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,6 +225,7 @@
 				AFFB71ED2719E5DB00078020 /* HomeTableView.swift */,
 				AFFB720D271B4D7200078020 /* ReorderView.swift */,
 				AFFB7211271BC7F600078020 /* AlbumGridView.swift */,
+				AFFB7221271FC58000078020 /* AlbumInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +236,7 @@
 				AFFB71BC2718EA2900078020 /* HomeTableViewController.swift */,
 				AFFB720B271B2E4D00078020 /* ReorderViewController.swift */,
 				AFFB720F271BC58800078020 /* AlbumGridViewController.swift */,
+				AFFB721F271FB64E00078020 /* AddInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,8 +255,8 @@
 		AFFB71FE271B26AC00078020 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				AFFB7201271B26B600078020 /* PTSerif-Bold.ttf */,
-				AFFB7202271B26B600078020 /* PTSerif-Regular.ttf */,
+				AFFB7218271F4DCD00078020 /* PTSerif-Bold.ttf */,
+				AFFB721A271F4DCD00078020 /* PTSerif-Regular.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -368,11 +370,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFB7209271B285F00078020 /* PTSerif-Bold.ttf in Resources */,
-				AFFB720A271B285F00078020 /* PTSerif-Regular.ttf in Resources */,
 				AFFB71C52718EA2B00078020 /* LaunchScreen.storyboard in Resources */,
 				AFFB71C22718EA2B00078020 /* Assets.xcassets in Resources */,
+				AFFB721D271F4E3200078020 /* PTSerif-Regular.ttf in Resources */,
 				AFFB71C02718EA2900078020 /* Main.storyboard in Resources */,
+				AFFB721E271F4E3400078020 /* PTSerif-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,8 +382,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFB7204271B27E900078020 /* PTSerif-Bold.ttf in Resources */,
-				AFFB7207271B27EC00078020 /* PTSerif-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,8 +389,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFFB7205271B27E900078020 /* PTSerif-Bold.ttf in Resources */,
-				AFFB7208271B27EC00078020 /* PTSerif-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +502,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFFB7222271FC58000078020 /* AlbumInfoView.swift in Sources */,
 				AFFB7210271BC58800078020 /* AlbumGridViewController.swift in Sources */,
+				AFFB7220271FB64E00078020 /* AddInfoViewController.swift in Sources */,
 				AFFB71FD271B1D4700078020 /* helperfunctions.swift in Sources */,
 				AFFB7212271BC7F600078020 /* AlbumGridView.swift in Sources */,
 				AFFB7216271BCE5200078020 /* AlbumPicture.swift in Sources */,

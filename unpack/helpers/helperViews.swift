@@ -50,3 +50,38 @@ func setImageURL(urlString: String) ->  UIImage? {
 
 
 }
+
+
+class ButtonWithImage: UIButton {
+    
+    func addRightBorder(borderColor: UIColor, borderWidth: CGFloat) {
+       let border = CALayer()
+       border.backgroundColor = borderColor.cgColor
+       border.frame = CGRect(x: 0,y: self.frame.size.height - borderWidth, width:self.frame.size.width, height:borderWidth )
+       self.layer.addSublayer(border)
+    }
+
+    func addLeftBorder(color: UIColor, width: CGFloat) {
+       let border = CALayer()
+       border.backgroundColor = color.cgColor
+        border.frame = CGRect(x:0, y:0, width:self.frame.size.width, height:1)
+       self.layer.addSublayer(border)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if imageView != nil {
+            imageEdgeInsets = UIEdgeInsets(top: 10, left: (bounds.width - 35), bottom: 5, right: 5)
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (imageView?.frame.width)!)
+            
+            self.addRightBorder(borderColor: .lightGray, borderWidth: 1)
+            self.addLeftBorder(color: .lightGray, width: 1)
+
+            
+            
+            
+            
+        }
+    }
+}
