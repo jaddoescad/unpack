@@ -155,9 +155,8 @@ extension HomeTableViewController {
     
     
     func changeNavigationBarColor() {
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.isTranslucent = false
                 navigationController?.navigationBar.barTintColor = UIColor.white
-//        self.navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func setUpNavigationBarTitleImage() {

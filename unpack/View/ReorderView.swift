@@ -41,7 +41,7 @@ extension ReorderViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.title = "Hold to sort"
 
-        switchNavItemtoNext()    }
+        switchNavItemtoNext(number: images.count)    }
     
 
 }
@@ -151,7 +151,7 @@ extension ReorderViewController {
                     if newStatus ==  PHAuthorizationStatus.authorized {
                         if #available(iOS 14, *) {
                             var configuration = PHPickerConfiguration()
-                            configuration.selectionLimit = 100
+                            configuration.selectionLimit = 100 - self.images.count
                             configuration.filter = .images
                             
                             
@@ -169,7 +169,7 @@ extension ReorderViewController {
         })
         floaty.addItem("Delete Pictures", icon: UIImage(named: "bin")!, handler: { item in
             self.showDelete = true
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(self.cancel))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.cancel))
             self.collectionView.reloadData()
         })
 
@@ -178,7 +178,8 @@ extension ReorderViewController {
     
     @objc func cancel() {
         self.showDelete = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(NextAddDetails))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(NextAddDetails))
+        switchNavItemtoNext(number: images.count)
         self.collectionView.reloadData()
     }
 }

@@ -11,6 +11,13 @@ import UIKit
 
 class AddInfoViewController: UIViewController, UITextViewDelegate {
     
+    @IBOutlet weak var numberOfImages: ButtonWithImage!
+    
+    var totalNumberOfImages:Int = 0;
+    
+    @IBAction func backToPhotosWithNumber(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var placeholderLabel: UILabel!
     
     @IBOutlet weak var albumTitleTextField: UITextView!
@@ -30,7 +37,7 @@ class AddInfoViewController: UIViewController, UITextViewDelegate {
 
         placeholderLabel.isHidden = !albumTitleTextField.text.isEmpty
 
-        placeholderLabel.text = "Enter title..."
+        placeholderLabel.text = "Add a title for your album..."
         placeholderLabel.font = UIFont(name: "PTSerif-Bold", size: 15)
         
         albumTitleTextField.font = UIFont(name: "PTSerif-Bold", size: 15)
@@ -41,6 +48,11 @@ class AddInfoViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (albumTitleTextField.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.isHidden = !albumTitleTextField.text.isEmpty
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let buttonNumbertitle = "\(totalNumberOfImages)" + " " + (totalNumberOfImages==1 ? "Photo" : "Photos")
+        numberOfImages.setTitle(buttonNumbertitle, for: .normal)
     }
     
     func textViewDidChange(_ textView: UITextView) {

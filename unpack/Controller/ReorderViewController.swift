@@ -17,8 +17,8 @@ class ReorderViewController: UICollectionViewController, PHPickerViewControllerD
         didSet {
             if (images.count == 0) {
                 showDelete = false
-                switchNavItemtoNext()
                 self.navigationItem.rightBarButtonItem?.isEnabled = false
+                switchNavItemtoNext(number: images.count)
                 
             } else {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -34,7 +34,9 @@ class ReorderViewController: UICollectionViewController, PHPickerViewControllerD
     
     @objc func NextAddDetails() {
         let AddInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddInfoViewController") as! AddInfoViewController
-            
+        
+        AddInfoViewController.totalNumberOfImages = 10
+
         self.navigationController?.pushViewController(AddInfoViewController, animated: true)
     }
     
@@ -65,6 +67,7 @@ class ReorderViewController: UICollectionViewController, PHPickerViewControllerD
                         DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
                             self.images.append(images_[i])
                             self.collectionView?.insertItems(at: [IndexPath(item: self.images.count - 1, section: 0)])
+                            self.switchNavItemtoNext(number: self.images.count)
                         }
                 }
             }
@@ -147,8 +150,9 @@ extension ReorderViewController {
         self.collectionView.reloadData()
     }
     
-    func switchNavItemtoNext() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(NextAddDetails))
+    func switchNavItemtoNext(number: Int) {
+        let title = (number == 0 ? "Next" : "(\(number))Next")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(NextAddDetails))
     }
 }
 
