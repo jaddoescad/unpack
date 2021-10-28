@@ -135,18 +135,17 @@ extension HomeTableViewController {
         self.view.backgroundColor = .white
 //        navigationController?.navigationBar.barTintColor = UIColor.white
 
-        setupNavigationBar()
+        setupNavigationBarItems()
 //        changeStatusBarColor()
     }
     
     
 
     
-    func setupNavigationBar() {
+    func setupNavigationBarItems() {
         //change title image
         setUpNavigationBarTitleImage()
         //  change color of navigation bar
-        changeNavigationBarColor()
         // add navigation bar Item
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         add.tintColor = .black
@@ -154,10 +153,7 @@ extension HomeTableViewController {
     }
     
     
-    func changeNavigationBarColor() {
-        self.navigationController?.navigationBar.isTranslucent = false
-                navigationController?.navigationBar.barTintColor = UIColor.white
-    }
+
     
     func setUpNavigationBarTitleImage() {
         
@@ -187,14 +183,4 @@ extension HomeTableViewController {
 }
 
 
-extension UIColor {
-    func as1ptImage() -> UIImage {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        let ctx = UIGraphicsGetCurrentContext()
-        self.setFill()
-        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
-    }
-}
+

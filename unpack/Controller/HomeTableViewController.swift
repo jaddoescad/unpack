@@ -14,16 +14,16 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
     
     private let album = AlbumAPI.getAlbums() // model
     var rowHeights:[Int:CGFloat] = [:]
-    
+    var picking: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        
         self.tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "albumCell")
-        // We can use a 1px image with the color we want for the shadow image
-        self.navigationController?.navigationBar.shadowImage = UIColor.lightGray.as1ptImage()
+        setupNavigationBar(navigationController: self.navigationController, lineColor: .lightGray)
 
     }
     
@@ -105,6 +105,12 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
     
     @available(iOS 14, *)
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        if picking == true {
+            return
+        }
+        picking = true
+        
         dismiss(animated: true) {
             let group = DispatchGroup()
             
@@ -130,6 +136,7 @@ class HomeTableViewController: UITableViewController, PHPickerViewControllerDele
                 ReorderViewController.images = images;
                 
                 self.navigationController?.pushViewController(ReorderViewController, animated: true)
+                self.picking = false
             }
             
             

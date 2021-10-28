@@ -143,6 +143,10 @@ extension ReorderViewController {
         floaty.addItem("Add more pictures", icon: UIImage(named: "cameraPlus")!, handler: { item in
             self.showDelete = false
             self.collectionView.reloadData()
+            if (self.images.count >= 100) {
+                basicAlert(message: "You already have 100 images selected, please delete images", controller: self)
+                return
+            }
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
                 DispatchQueue.main.async {

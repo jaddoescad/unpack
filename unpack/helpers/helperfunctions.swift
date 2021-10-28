@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//create function to work with hex
 func UIColorFromRGB(rgbValue: UInt) -> UIColor {
     return UIColor(
         red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -39,3 +40,50 @@ func openVC(navigationController: UINavigationController?, vc: UIViewController)
     navigationController?.view.layer.add(transition, forKey: nil)
     navigationController?.pushViewController(vc, animated: false)
 }
+
+//Setup a navigation bar
+func setupNavigationBar(navigationController: UINavigationController?, lineColor: UIColor) {
+    navigationController?.navigationBar.isTranslucent = false
+    navigationController?.navigationBar.barTintColor = UIColor.white
+    navigationController?.navigationBar.shadowImage = lineColor.as1ptImage()
+
+}
+
+//Create a basic error box
+func basicAlert(title:String = "Error", message: String, controller: UIViewController){
+    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        switch action.style{
+            case .default:
+            print("default")
+            
+            case .cancel:
+            print("cancel")
+            
+            case .destructive:
+            print("destructive")
+        }
+    }))
+    controller.present(alert, animated: true, completion: nil)
+}
+
+//check if a string has special characters
+func checkForSpecialCharacters(word: String) -> Bool {
+    let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+    if word.rangeOfCharacter(from: characterset.inverted) != nil {
+        return true
+    } else {
+        return false
+    }
+}
+
+
+func isValidEmail(_ email: String) -> Bool {
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+    let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+    return emailPred.evaluate(with: email)
+}
+
+
+

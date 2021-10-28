@@ -7,6 +7,11 @@ target 'unpack' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher', '~> 7.0'
   pod 'Floaty', '~> 4.2.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore' 
+  pod 'FirebaseFirestoreSwift'
+
   # Pods for unpack
 
   target 'unpackTests' do

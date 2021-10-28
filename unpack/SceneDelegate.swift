@@ -6,17 +6,34 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var firstToNavigate: UIViewController!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: windowScene)
+        window?.backgroundColor = .white // or the color that you prefer
+        window?.makeKeyAndVisible()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil) //SomeStoryboard  is name of .storyboard
+
+        if let user = Auth.auth().currentUser {
+            firstToNavigate = storyboard.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
+
+
+        } else {
+            firstToNavigate =
+            storyboard.instantiateViewController(withIdentifier: "firstNavigationController") as! UINavigationController
+        }// or the first controller presented in your app
+        window?.rootViewController = firstToNavigate
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
